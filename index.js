@@ -1,16 +1,32 @@
 const express = require('express')
-const helmet = require('helmet')
-const knex = require('knex')
+// const helmet = require('helmet')
+const cohorts = require('./routes/cohortsRoute')
 
-const knexConfig = {
-    client: 'sqlite3',
-    connection: {
-        filename: './data/lambda.db3',
-    },
-    useNullAsDefault: true,
-}
-
-const db = knex(knexConfig)
 const server = express()
-
 server.use(express.json())
+
+server.use('/api/cohorts', cohorts)
+
+
+server.use((req, res, next) => {
+    const err = new Error("Not Found")
+    err.status = 404
+    next(err)
+})
+
+// global error handler
+server.use((err, req, res, next) => {
+    // console.log(err)
+    res
+    .status(err.status || 500)
+    .json({
+        error: {
+            message: err.message
+        }
+    })
+})
+
+const port = process.env.PORT || 5000;
+server.listen(port, () =>
+    console.log(`\n** API running on http://localhost:${port} **\n`)
+)

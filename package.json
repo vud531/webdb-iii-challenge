@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vud531/webdb-iii-challenge.git"
@@ -20,7 +21,8 @@
   "homepage": "https://github.com/vud531/webdb-iii-challenge#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "knex": "^0.16.5"
+    "knex": "^0.16.5",
+    "sqlite3": "^4.0.6"
   },
   "devDependencies": {
     "nodemon": "^1.19.0"
