@@ -1,11 +1,13 @@
 const express = require('express')
 // const helmet = require('helmet')
 const cohorts = require('./routes/cohortsRoute')
+const students = require('./routes/studentsRoute')
 
 const server = express()
 server.use(express.json())
 
 server.use('/api/cohorts', cohorts)
+server.use('/api/students', students)
 
 
 server.use((req, res, next) => {

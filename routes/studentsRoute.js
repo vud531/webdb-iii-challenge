@@ -3,7 +3,7 @@ const knex = require('knex')
 const knexConfig = require('../knexfile')
 
 const db = knex(knexConfig.development)
-const model = 'cohorts'
+const model = 'students'
 
 const { asyncHandler } = require('./helpers')
 
